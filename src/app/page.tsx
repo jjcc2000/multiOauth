@@ -1,103 +1,97 @@
-import Image from "next/image";
+"use client";
+import React from "react";
+
+import PasswordInput from "@/components/PasswordInput";
+import { handleSignInGoogle, handleSignOutGoogle } from "../lib/authGoogle";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex justify-center items-center min-h-screen bg-[linear-gradient(90deg,#e2e2e2,#9096aa)] font-poppins">
+      <div className="relative w-[850px] h-[550px] bg-white m-5 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden flex">
+        {/* Left Button Panel */}
+        <div className="w-1/2 bg-gray-100 flex flex-col justify-center items-center gap-4 p-6">
+          <h2 className="text-gray-800 font-semibold font-[DM Sans]">
+            Sign in with
+          </h2>
+          <button
+            className="flex items-center justify-center gap-2 w-40 h-11 bg-white text-gray-700 font-semibold font-poppins rounded-full shadow-md hover:scale-105 transition-all duration-300 border border-gray-300"
+            onClick={() => {
+              alert("Google Sign In Clicked");
+              handleSignInGoogle();
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <img
+              src="https://developers.google.com/identity/images/g-logo.png"
+              alt="Google"
+              className="w-5 h-5"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <span className="text-sm font-medium">Google</span>
+          </button>
+          <button
+            className="flex items-center justify-center gap-2 w-40 h-11 bg-white text-[#1877F2] text-sm leading-none font-medium font-poppins rounded-full shadow-md hover:scale-105 transition-all duration-300"
+            onClick={() => {
+              alert("Facebook Sign In Clicked");
+            }}
           >
-            Read our docs
-          </a>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+              alt="Facebook"
+              className="w-5 h-5"
+            />
+            <span>Facebook</span>
+          </button>
+
+          <button
+            className="flex items-center justify-center gap-2 w-40 h-11 bg-white text-[#1DA1F2] text-sm leading-none font-medium font-poppins rounded-full shadow-md hover:scale-105 transition-all duration-300"
+            onClick={() => {
+              alert("Twitter Sign In Clicked");
+            }}
+          >
+            <img
+              src="https://abs.twimg.com/favicons/twitter.2.ico"
+              alt="Twitter"
+              className="w-5 h-5"
+            />
+            <span>X / Twitter</span>
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Right Form Panel */}
+        <div className="w-1/2 h-full bg-white flex items-center text-center text-gray-800 p-10 transition-all duration-[1200ms] ease-in-out z-[1] form-box">
+          <form className="w-full">
+            <h1 className="text-[36px] mb-[-10px]">Welcome</h1>
+            <p className="text-[14.5px] my-4">Sign in to continue</p>
+
+            <div className="relative my-6">
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full p-3 pr-12 bg-[#eee] rounded-lg border-none outline-none text-[16px] font-medium placeholder:text-gray-500 placeholder:font-normal"
+              />
+              <i className="absolute right-5 top-1/2 transform -translate-y-1/2 text-xl">
+                👤
+              </i>
+            </div>
+
+            <div className="relative my-6">
+              <PasswordInput />
+            </div>
+
+            <div className="mb-4 text-[14.5px]">
+              <a href="#" className="text-gray-700">
+                Forgot password?
+              </a>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full h-12 bg-[linear-gradient(90deg,#e2e2e2,#9096aa)] rounded-lg shadow-md text-white font-semibold text-[16px]"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
