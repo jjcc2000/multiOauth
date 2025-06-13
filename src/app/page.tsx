@@ -3,6 +3,7 @@ import React from "react";
 
 import PasswordInput from "@/components/PasswordInput";
 import { handleSignInGoogle, handleSignOutGoogle } from "../lib/authGoogle";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
   return (
@@ -16,8 +17,7 @@ export default function Home() {
           <button
             className="flex items-center justify-center gap-2 w-40 h-11 bg-white text-gray-700 font-semibold font-poppins rounded-full shadow-md hover:scale-105 transition-all duration-300 border border-gray-300"
             onClick={() => {
-              alert("Google Sign In Clicked");
-              handleSignInGoogle();
+              signIn("google", { callbackUrl: "/user?provider=google" });
             }}
           >
             <img
@@ -45,6 +45,7 @@ export default function Home() {
             className="flex items-center justify-center gap-2 w-40 h-11 bg-white text-[#1DA1F2] text-sm leading-none font-medium font-poppins rounded-full shadow-md hover:scale-105 transition-all duration-300"
             onClick={() => {
               alert("Twitter Sign In Clicked");
+              signIn("twitter", { callbackUrl: "/user?provider=twitter" });
             }}
           >
             <img
@@ -68,9 +69,9 @@ export default function Home() {
                 placeholder="Username"
                 className="w-full p-3 pr-12 bg-[#eee] rounded-lg border-none outline-none text-[16px] font-medium placeholder:text-gray-500 placeholder:font-normal"
               />
-              <i className="absolute right-5 top-1/2 transform -translate-y-1/2 text-xl">
-                👤
-              </i>
+              <span className="absolute right-5 top-1/2 transform -translate-y-1/2 text-xl">
+                👩🏻‍💻​
+              </span>
             </div>
 
             <div className="relative my-6">

@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# Data Sensitve
+*.txt
+
 # next.js
 /.next/
 /out/
